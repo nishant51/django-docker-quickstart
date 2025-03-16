@@ -52,7 +52,8 @@ This sets up:
 Since this is a config-only setup, create your app inside the container:
 
 ```bash
-docker-compose exec web python manage.py startapp myapp
+docker exec -it <CONTAINER_ID> /bin/bash
+python manage.py startapp myapp
 ```
 
 Move the `myapp` directory into `app/` and add `'myapp'` to `INSTALLED_APPS` in `app/settings.py`.
@@ -62,7 +63,8 @@ Move the `myapp` directory into `app/` and add `'myapp'` to `INSTALLED_APPS` in 
 Run migrations for the default Django apps (or your custom app):
 
 ```bash
-docker-compose exec web python manage.py migrate
+ docker exec -it <CONTAINER_ID> /bin/bash
+ python manage.py migrate
 ```
 
 ## Create a Superuser (Optional)
